@@ -1,13 +1,17 @@
 <template>
-  <v-data-table :headers="headers" :items="recordings"></v-data-table>
+  <v-data-table :headers="headers" :items="recordings" :loading="isLoading">
+    <template v-slot:item.file="{ item }">
+      <audio controls :src="item.file"></audio>
+    </template>
+  </v-data-table>
 </template>
 
 <script setup lang="ts">
 import { useBirdStore } from "@/stores/app";
 import { storeToRefs } from "pinia";
 
-const store = useBirdStore();
-const { recordings } = storeToRefs(store),
+const store = useBirdStore(),
+  { recordings, isLoading } = storeToRefs(store),
   { fetchBirds } = store;
 
 const headers = computed(() => [
@@ -23,3 +27,10 @@ const headers = computed(() => [
 
 onMounted(() => fetchBirds());
 </script>
+
+<style>
+audio {
+  display: block;
+  height: 30px;
+}
+</style>
