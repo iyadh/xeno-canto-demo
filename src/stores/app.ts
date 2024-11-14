@@ -15,7 +15,7 @@ export const useBirdStore = defineStore("birdsStore", () => {
 
   const fetchBirds = async () => {
     isLoading.value = true;
-    error.value = false;
+    error.value = null;
 
     try {
       const response = await fetch(

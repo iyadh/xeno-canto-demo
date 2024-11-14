@@ -25,5 +25,4 @@ import { storeToRefs } from "pinia";
 const store = useBirdStore(),
   { searchQuery, isLoading, showShortRecordingsOnly } = storeToRefs(store),
   { fetchBirds } = store;
-const model = ref("No");
 </script>
