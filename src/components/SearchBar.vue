@@ -12,11 +12,8 @@
       ></v-text-field>
       <v-switch
         color="primary"
-        v-model="model"
-        :label="`Recs longer than 30s? ${model}`"
-        false-value="No"
-        true-value="Yes"
-        hide-details
+        v-model="showShortRecordingsOnly"
+        label="Show only recordings shorter than 30 seconds"
       ></v-switch>
     </v-card-text>
   </v-card>
@@ -26,7 +23,7 @@ import { useBirdStore } from "@/stores/app";
 import { storeToRefs } from "pinia";
 
 const store = useBirdStore(),
-  { searchQuery, isLoading } = storeToRefs(store),
+  { searchQuery, isLoading, showShortRecordingsOnly } = storeToRefs(store),
   { fetchBirds } = store;
 const model = ref("No");
 </script>

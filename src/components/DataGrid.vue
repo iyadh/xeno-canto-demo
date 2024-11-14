@@ -3,7 +3,11 @@
     :title="`Search Results for: ${searchQuery}`"
     :subtitle="`Total recordings found: ${numRecordings}`"
   >
-    <v-data-table :headers="headers" :items="recordings" :loading="isLoading">
+    <v-data-table
+      :headers="headers"
+      :items="filteredRecordings"
+      :loading="isLoading"
+    >
       <template v-slot:item.file="{ item }">
         <audio controls :src="item.file"></audio>
       </template>
@@ -16,7 +20,8 @@ import { useBirdStore } from "@/stores/app";
 import { storeToRefs } from "pinia";
 
 const store = useBirdStore(),
-  { recordings, isLoading, searchQuery, numRecordings } = storeToRefs(store),
+  { filteredRecordings, isLoading, searchQuery, numRecordings } =
+    storeToRefs(store),
   { fetchBirds } = store;
 
 const headers = computed(() => [

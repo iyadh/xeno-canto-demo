@@ -1,6 +1,7 @@
 // Utilities
 import { defineStore } from "pinia";
 import { Recording, ApiResponse } from "@types";
+import parseLengthToSeconds from "@/utils";
 
 export const useBirdStore = defineStore("birdsStore", () => {
   const recordings = ref<Recording[]>([]),
@@ -9,8 +10,8 @@ export const useBirdStore = defineStore("birdsStore", () => {
     error = ref<Error | null>(null),
     numRecordings = ref(0),
     page = ref(1),
-    numPages = ref(1);
-  // lengthFilter = ref<"all" | "lessThan30" | "greaterThan30">("all");
+    numPages = ref(1),
+    showShortRecordingsOnly = ref(false);
 
   const fetchBirds = async () => {
     isLoading.value = true;
@@ -36,14 +37,25 @@ export const useBirdStore = defineStore("birdsStore", () => {
     }
   };
 
+  // Computed property to get recordings filtered by length
+  const filteredRecordings = computed(() => {
+    if (!showShortRecordingsOnly.value) {
+      return recordings.value;
+    } else {
+      return recordings.value.filter((rec: Recording) => {
+        const lengthInSeconds = parseLengthToSeconds(rec.length);
+        return lengthInSeconds < 30;
+      });
+    }
+  });
+
   return {
-    recordings,
     searchQuery,
     numRecordings,
-    page,
-    numPages,
     isLoading,
     error,
     fetchBirds,
+    showShortRecordingsOnly,
+    filteredRecordings,
   };
 });
