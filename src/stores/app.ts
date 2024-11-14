@@ -1,17 +1,17 @@
 // Utilities
 import { defineStore } from "pinia";
-import { Recording, ApiResponse } from "@types";
+import { ApiResponse, Recording } from "@/types";
 import parseLengthToSeconds from "@/utils";
 
 export const useBirdStore = defineStore("birdsStore", () => {
-  const recordings = ref<Recording[]>([]),
-    searchQuery = ref("grus"),
-    isLoading = ref(false),
-    error = ref<Error | null>(null),
-    numRecordings = ref(0),
-    page = ref(1),
-    numPages = ref(1),
-    showShortRecordingsOnly = ref(false);
+  const recordings = ref<Recording[]>([]);
+  const searchQuery = ref("grus");
+  const isLoading = ref(false);
+  const error = ref<Error | null>(null);
+  const numRecordings = ref(0);
+  const page = ref(1);
+  const numPages = ref(1);
+  const showShortRecordingsOnly = ref(false);
 
   const fetchBirds = async () => {
     isLoading.value = true;

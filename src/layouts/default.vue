@@ -3,7 +3,7 @@
     <v-main class="pa-8 ga-4">
       <router-view />
     </v-main>
-    <v-alert v-if="error" type="error" dismissible>
+    <v-alert v-if="error" dismissible type="error">
       {{ error.message }}
     </v-alert>
     <AppFooter />
@@ -11,9 +11,9 @@
 </template>
 
 <script lang="ts" setup>
-import { useBirdStore } from "@/stores/app";
-import { storeToRefs } from "pinia";
+  import { useBirdStore } from '@/stores/app'
+  import { storeToRefs } from 'pinia'
 
-const store = useBirdStore(),
-  { error } = storeToRefs(store);
+  const store = useBirdStore()
+  const { error } = storeToRefs(store)
 </script>

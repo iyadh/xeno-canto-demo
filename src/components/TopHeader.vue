@@ -1,7 +1,7 @@
 <template>
   <nav>
-    <a href="/" class="d-flex ga-3 logo align-center">
-      <v-img class="mb-4" alt="Xeno Canto Demo" src="@/assets/logo.svg" />
+    <a class="d-flex ga-3 logo align-center" href="/">
+      <v-img alt="Xeno Canto Demo" class="mb-4" src="@/assets/logo.svg" />
     </a>
   </nav>
 </template>

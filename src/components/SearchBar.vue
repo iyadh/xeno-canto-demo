@@ -2,27 +2,27 @@
   <v-card>
     <v-card-text class="pt-4 d-flex ga-4">
       <v-text-field
-        :loading="isLoading"
         v-model="searchQuery"
+        append-inner-icon="mdi-magnify"
         clearable
         label="Search Birds"
-        @keyup.enter="fetchBirds"
-        append-inner-icon="mdi-magnify"
+        :loading="isLoading"
         @click:append-inner="fetchBirds"
-      ></v-text-field>
+        @keyup.enter="fetchBirds"
+      />
       <v-switch
-        color="primary"
         v-model="showShortRecordingsOnly"
+        color="primary"
         label="Show only recordings shorter than 30 seconds"
-      ></v-switch>
+      />
     </v-card-text>
   </v-card>
 </template>
 <script setup lang="ts">
-import { useBirdStore } from "@/stores/app";
-import { storeToRefs } from "pinia";
+  import { useBirdStore } from '@/stores/app'
+  import { storeToRefs } from 'pinia'
 
-const store = useBirdStore(),
-  { searchQuery, isLoading, showShortRecordingsOnly } = storeToRefs(store),
-  { fetchBirds } = store;
+  const store = useBirdStore()
+  const { searchQuery, isLoading, showShortRecordingsOnly } = storeToRefs(store)
+  const { fetchBirds } = store
 </script>
