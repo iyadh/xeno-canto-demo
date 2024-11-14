@@ -7,6 +7,7 @@ export const useBirdStore = defineStore("birdsStore", () => {
     searchQuery = ref("grus"),
     isLoading = ref(false),
     error = ref<Error | null>(null),
+    numRecordings = ref(0),
     page = ref(1),
     numPages = ref(1);
   // lengthFilter = ref<"all" | "lessThan30" | "greaterThan30">("all");
@@ -24,6 +25,7 @@ export const useBirdStore = defineStore("birdsStore", () => {
       }
 
       const data: ApiResponse = await response.json();
+      numRecordings.value = data.numRecordings;
       recordings.value = data.recordings;
       page.value = data.page;
       numPages.value = data.numPages;
@@ -37,6 +39,7 @@ export const useBirdStore = defineStore("birdsStore", () => {
   return {
     recordings,
     searchQuery,
+    numRecordings,
     page,
     numPages,
     isLoading,

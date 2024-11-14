@@ -13,5 +13,6 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     SearchBar: typeof import('./components/SearchBar.vue')['default']
     SerchBar: typeof import('./components/SerchBar.vue')['default']
+    TopHeader: typeof import('./components/TopHeader.vue')['default']
   }
 }

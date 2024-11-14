@@ -1,23 +1,25 @@
 <template>
-  <div>
-    <v-text-field
-      :loading="isLoading"
-      v-model="searchQuery"
-      clearable
-      label="Search Birds"
-      @keyup.enter="fetchBirds"
-      append-inner-icon="mdi-magnify"
-      @click:append-inner="fetchBirds"
-    ></v-text-field>
-    <v-switch
-      color="primary"
-      v-model="model"
-      :label="`Recs longer than 30s? ${model}`"
-      false-value="No"
-      true-value="Yes"
-      hide-details
-    ></v-switch>
-  </div>
+  <v-card>
+    <v-card-text class="pt-4 d-flex ga-4">
+      <v-text-field
+        :loading="isLoading"
+        v-model="searchQuery"
+        clearable
+        label="Search Birds"
+        @keyup.enter="fetchBirds"
+        append-inner-icon="mdi-magnify"
+        @click:append-inner="fetchBirds"
+      ></v-text-field>
+      <v-switch
+        color="primary"
+        v-model="model"
+        :label="`Recs longer than 30s? ${model}`"
+        false-value="No"
+        true-value="Yes"
+        hide-details
+      ></v-switch>
+    </v-card-text>
+  </v-card>
 </template>
 <script setup lang="ts">
 import { useBirdStore } from "@/stores/app";

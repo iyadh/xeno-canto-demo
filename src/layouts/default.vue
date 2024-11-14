@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-main>
+  <v-app class="bg-grey-lighten-5">
+    <v-main class="pa-8 ga-4">
       <router-view />
     </v-main>
 
@@ -9,5 +9,5 @@
 </template>
 
 <script lang="ts" setup>
-  //
+//
 </script>

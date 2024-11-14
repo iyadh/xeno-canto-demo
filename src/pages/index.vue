@@ -1,9 +1,9 @@
 <template>
-  <nav>
-    <a href="/">Xeno Canto Demo</a>
-  </nav>
-  <SearchBar />
-  <DataGrid />
+  <div class="d-flex flex-column ga-4">
+    <TopHeader />
+    <SearchBar />
+    <DataGrid />
+  </div>
 </template>
 
 <script lang="ts" setup>
