@@ -2,7 +2,7 @@
   <div>
     <v-text-field
       :loading="isLoading"
-      v-model="searisLoadingQuery"
+      v-model="searchQuery"
       clearable
       label="Search Birds"
       @keyup.enter="fetchBirds"
@@ -23,8 +23,8 @@
 import { useBirdStore } from "@/stores/app";
 import { storeToRefs } from "pinia";
 
-const store = useBirdStore();
-const { searchQuery, isLoading } = storeToRefs(store),
+const store = useBirdStore(),
+  { searchQuery, isLoading } = storeToRefs(store),
   { fetchBirds } = store;
 const model = ref("No");
 </script>
