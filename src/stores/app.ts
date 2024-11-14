@@ -26,7 +26,7 @@ export const useBirdStore = defineStore("birdsStore", () => {
       }
 
       const data: ApiResponse = await response.json();
-      numRecordings.value = data.numRecordings;
+      numRecordings.value = Number(data.numRecordings);
       recordings.value = data.recordings;
       page.value = data.page;
       numPages.value = data.numPages;
