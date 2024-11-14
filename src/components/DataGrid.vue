@@ -1,16 +1,14 @@
 <template>
-  <v-data-table :headers="headers" :items="birdStore.recordings"></v-data-table>
+  <v-data-table :headers="headers" :items="recordings"></v-data-table>
 </template>
 
 <script setup lang="ts">
 import { useBirdStore } from "@/stores/app";
+import { storeToRefs } from "pinia";
 
-const birdStore = useBirdStore();
-const searchQuery = ref("grus");
-
-const fetchBirds = () => {
-  birdStore.fetchBirds(searchQuery.value);
-};
+const store = useBirdStore();
+const { recordings } = storeToRefs(store),
+  { fetchBirds } = store;
 
 const headers = computed(() => [
   { title: "ID", key: "id", width: 70 },
